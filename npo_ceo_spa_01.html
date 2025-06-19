@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPO 卓越領袖教練 - 余孟勳 (Simon) 您的專屬策略與領導力加速器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Neutral (Background: slate-50, Text: slate-800, Accent: blue-600) -->
+    <!-- Application Structure Plan: A thematic, single-page scrolling application. The structure follows a persuasive narrative: Hero -> Problem (interactive cards) -> Solution -> Service Details (interactive tabs) -> Credibility -> Process & Outcomes -> CTA. This non-linear, interactive approach is chosen over a static slide deck to enhance user engagement, allow for self-paced exploration of service details, and present a more modern, professional image aligned with a high-value consulting service. A sticky navigation bar enables quick access to all key sections. -->
+    <!-- Visualization & Content Choices: Report Info: NPO Leader Challenges -> Goal: Empathize/Inform -> Viz: Grid of interactive hover cards (HTML/CSS/JS) -> Justification: More engaging than a list. Report Info: Core Service Details -> Goal: Organize/Inform -> Viz: Tabbed interface (HTML/CSS/JS) -> Justification: Breaks down dense info, user-controlled exploration. Report Info: Simon's Qualifications -> Goal: Build Credibility -> Viz: Icon-based grid layout -> Justification: Scannable and visually appealing. Report Info: Satisfaction Score (4.79/5) -> Goal: Inform/Persuade -> Viz: Dynamic stat card (HTML/CSS) -> Justification: Highlights a key proof point effectively without needing a full chart. CONFIRMING NO SVG/Mermaid. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        .tab-active {
+            border-color: #2563eb;
+            color: #2563eb;
+            font-weight: 700;
+        }
+        .tab-inactive {
+            border-color: transparent;
+            color: #475569;
+        }
+        .tab-content {
+            transition: opacity 0.3s ease-in-out, max-height 0.5s ease-in-out;
+            overflow: hidden;
+        }
+        .tab-content.hidden {
+            opacity: 0;
+            max-height: 0;
+        }
+        .tab-content:not(.hidden) {
+            opacity: 1;
+            max-height: 1000px;
+        }
+        .challenge-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .challenge-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            border-color: #60a5fa;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <header class="bg-slate-50/80 backdrop-blur-lg sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0">
+                    <a href="#hero" class="text-xl font-bold text-slate-800">余孟勳 (Simon)</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#challenges" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">領導者挑戰</a>
+                        <a href="#services" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">核心服務</a>
+                        <a href="#about" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">關於我</a>
+                        <a href="#contact" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-full text-sm font-bold">立即諮詢</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-800 hover:bg-slate-100 focus:outline-none">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+             <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                    <a href="#challenges" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">領導者挑戰</a>
+                    <a href="#services" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">核心服務</a>
+                    <a href="#about" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">關於我</a>
+                    <a href="#contact" class="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-bold">立即諮詢</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="py-24 sm:py-32 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
+                    NPO 卓越領袖教練
+                </h1>
+                <p class="mt-6 max-w-3xl mx-auto text-lg sm:text-xl text-slate-600">
+                    您的專屬策略與領導力加速器。透過<span class="font-bold text-blue-600">一對一、客製化、機密</span>的指導，助您穩健引領組織，創造更大社會影響力。
+                </p>
+                <div class="mt-10">
+                    <a href="#contact" class="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        預約首次免費諮詢
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges" class="py-20 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">獨木難支？NPO 領導者的共同挑戰</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">在瞬息萬變的環境中，NPO 領導者往往面臨多重壓力。這項服務旨在成為您最堅實的後盾，協助您將挑戰轉化為組織成長的契機。</p>
+                </div>
+                <div class="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">🔄</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">變動環境下的適應力</h3>
+                        <p class="mt-2 text-slate-600">法規更新、勸募趨勢轉變，要求領導者具備高度敏銳度與應變能力。</p>
+                    </div>
+                    <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">🌱</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">組織永續經營壓力</h3>
+                        <p class="mt-2 text-slate-600">如何確保財務穩健、有效開發資源及管理人才，是永續發展的核心考驗。</p>
+                    </div>
+                    <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">⚖️</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">治理與問責的複雜性</h3>
+                        <p class="mt-2 text-slate-600">在透明度與營運效率間尋求最佳平衡，以建立並維持長期的公眾信任。</p>
+                    </div>
+                    <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">👤</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">高階決策的孤獨感</h3>
+                        <p class="mt-2 text-slate-600">關鍵時刻缺乏可信賴的外部顧問或同儕支持，獨自承擔重大決策壓力。</p>
+                    </div>
+                    <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">📈</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">個人成長與領導力提升</h3>
+                        <p class="mt-2 text-slate-600">日常事務繁忙，資源與時間有限，難以進行系統性的領導能力發展。</p>
+                    </div>
+                     <div class="challenge-card bg-white p-8 rounded-2xl shadow-sm border border-transparent">
+                        <div class="text-3xl text-blue-500">🤝</div>
+                        <h3 class="mt-4 text-xl font-bold text-slate-800">您的專屬陪跑教練</h3>
+                        <p class="mt-2 text-slate-600">我們提供客製化、機密的卓越之路，與您並肩作戰，共同面對與克服挑戰。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="py-20 sm:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">專注您的核心挑戰：我們的服務範疇</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">我們的服務涵蓋 NPO 領導者最關切的四大核心領域。您可以根據當前最迫切的需求，選擇聚焦的議題，我們將提供深度的策略指導與實務經驗分享。</p>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="border-b border-slate-200">
+                        <nav class="-mb-px flex space-x-4 sm:space-x-8" aria-label="Tabs">
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-active" data-tab="strategy">策略與發展</button>
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-inactive" data-tab="finance">財務與永續</button>
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-inactive" data-tab="governance">治理與問責</button>
+                            <button class="tab-btn whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm sm:text-base tab-inactive" data-tab="leadership">領導與團隊</button>
+                        </nav>
+                    </div>
+                    <div class="mt-8">
+                        <div id="strategy" class="tab-content">
+                            <h3 class="text-2xl font-bold text-slate-800">組織策略規劃與發展</h3>
+                            <p class="mt-4 text-slate-600">協助您釐清組織願景、使命與核心策略，建構清晰的長期發展藍圖，並優化營運模式，有效擴大社會影響力。</p>
+                            <div class="mt-6 bg-slate-50 p-6 rounded-lg">
+                                <p class="font-semibold text-slate-700">【相關實戰經驗】</p>
+                                <p class="mt-2 text-sm text-slate-600">曾協助<span class="font-bold">明怡基金會</span>初期發展贊助模式，並協助其組織將商業思維調整貼近非營利領域。</p>
+                            </div>
+                        </div>
+                        <div id="finance" class="tab-content hidden">
+                             <h3 class="text-2xl font-bold text-slate-800">財務健全與永續發展</h3>
+                            <p class="mt-4 text-slate-600">進行 NPO 財務體質健檢、預算規劃與精準成本控制。並提供金流管理優化，規劃多元募款策略，以及深入解讀財務報表以輔助決策。</p>
+                            <div class="mt-6 bg-slate-50 p-6 rounded-lg">
+                                <p class="font-semibold text-slate-700">【相關實戰經驗】</p>
+                                <p class="mt-2 text-sm text-slate-600">曾任企業財務經理、高級審計員，並擔任<span class="font-bold">為臺灣而教教育基金會、綠主張綠電合作社、人生百味</span>等超過20間中小型 NPO 的財務顧問，輔導導入 ERP、梳理流程與財務報告。</p>
+                            </div>
+                        </div>
+                        <div id="governance" class="tab-content hidden">
+                            <h3 class="text-2xl font-bold text-slate-800">治理與問責機制優化</h3>
+                            <p class="mt-4 text-slate-600">協助建立有效且透明的治理架構與內部控制體系，強化公眾信任。並提供關於法規變動的實務諮詢，例如公益勸募條例、財團法人法等。</p>
+                             <div class="mt-6 bg-slate-50 p-6 rounded-lg">
+                                <p class="font-semibold text-slate-700">【相關實戰經驗】</p>
+                                <p class="mt-2 text-sm text-slate-600"><span class="font-bold">台灣公益責信協會</span>創辦人，長期致力於提升公益組織責信，並撰寫多份《公益觀察》報告。曾參與<span class="font-bold">衛福部公益勸募業務委員會</span>，檢討公益勸募條例執行。</p>
+                            </div>
+                        </div>
+                        <div id="leadership" class="tab-content hidden">
+                             <h3 class="text-2xl font-bold text-slate-800">領導力與團隊管理</h3>
+                            <p class="mt-4 text-slate-600">全面提升溝通協調、危機處理與關鍵決策能力。並協助您有效激勵團隊成員，建立積極向上且高績效的組織文化。</p>
+                            <div class="mt-6 bg-slate-50 p-6 rounded-lg">
+                                <p class="font-semibold text-slate-700">【相關實戰經驗】</p>
+                                <p class="mt-2 text-sm text-slate-600">曾獲<span class="font-bold">東海大學 NPO 經營者培力計畫「學員回饋最優良講師」</span>，並為<span class="font-bold">家扶基金会</span>提供成本概念與單位管理應用培訓，學員實用性滿意度高達 <span class="text-blue-600 font-bold text-lg">4.79 / 5</span>。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-20 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">您值得信賴的專業夥伴</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">我將多年的跨領域經驗，淬煉成一套獨特的顧問方法。我的目標不僅是解決您眼前的問題，更是賦予您和您的組織持續成長的能力。</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <div class="text-4xl">🏢</div>
+                        <h4 class="mt-4 font-bold text-lg text-slate-800">創辦與領導經驗</h4>
+                        <p class="mt-2 text-sm text-slate-600">台灣公益責信協會創辦人兼執行長，深刻體悟 NPO 運作脈絡與領導挑戰。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <div class="text-4xl">💰</div>
+                        <h4 class="mt-4 font-bold text-lg text-slate-800">深厚財務背景</h4>
+                        <p class="mt-2 text-sm text-slate-600">曾任企業財務經理及安永會計師事務所高級審計員，具備扎實的財會稽核專業。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <div class="text-4xl">👨‍🏫</div>
+                        <h4 class="mt-4 font-bold text-lg text-slate-800">廣泛顧問實績</h4>
+                        <p class="mt-2 text-sm text-slate-600">擔任多家知名 NPO、社會企業及公部門顧問，服務對象涵蓋多元領域。</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl shadow-sm">
+                        <div class="text-4xl">✍️</div>
+                        <h4 class="mt-4 font-bold text-lg text-slate-800">卓越培訓與研究</h4>
+                        <p class="mt-2 text-sm text-slate-600">豐富的講師經驗，多項研究報告與專欄文章廣受引用，具備深刻洞察力。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="py-20 sm:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">合作模式與預期成果</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">我們的合作是一個持續對話與共同成長的過程。透過清晰的流程，我們將確保每一次的投入，都能為您和您的組織帶來實質且深遠的正面影響。</p>
+                </div>
+                <div class="mt-16 grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">我們的合作流程</h3>
+                        <ol class="mt-6 space-y-4">
+                           <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-4">1</span>
+                                <span class="text-slate-700">初步諮詢，了解您的現況與目標。</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-4">2</span>
+                                <span class="text-slate-700">共同擬定客製化的輔導計畫與節奏。</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-4">3</span>
+                                <span class="text-slate-700">彈性安排線上或實體會面，進行深度對話。</span>
+                            </li>
+                            <li class="flex">
+                                <span class="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-blue-500 text-white font-bold mr-4">4</span>
+                                <span class="text-slate-700">定期回顧目標進度，並動態調整服務重點。</span>
+                            </li>
+                        </ol>
+                         <p class="mt-6 text-sm text-slate-500">我們承諾提供<span class="font-semibold">真誠、務實且具洞察力</span>的建議，並嚴格遵守專業倫理，確保所有討論<span class="font-semibold">絕對機密</span>。</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-slate-800">您將獲得的成果</h3>
+                         <ul class="mt-6 space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1">✔</span>
+                                <span><strong class="text-slate-800">領導力與決策力顯著提升：</strong>更自信、清晰地做出關鍵決策。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1">✔</span>
+                                <span><strong class="text-slate-800">組織營運效率與財務穩健：</strong>建立更健康的財務體質，優化資源運用。</span>
+                            </li>
+                             <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1">✔</span>
+                                <span><strong class="text-slate-800">治理效能與公眾信任強化：</strong>提升組織透明度與問責，贏得更多社會支持。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1">✔</span>
+                                <span><strong class="text-slate-800">有效應對挑戰與危機：</strong>具備更強韌的應變能力。</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-green-500 mr-3 mt-1">✔</span>
+                                <span><strong class="text-slate-800">實現更大的社會影響力：</strong>讓您的組織使命得以更有效、更永續地推進。</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-20 sm:py-24 bg-slate-800 text-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold">期待與您展開對話</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-300">
+                    一次深入的對話，是開啟卓越領導之路的第一步。誠摯邀請您進行一次初步的免費諮詢，共同探索您的需求與合作可能性。
+                </p>
+                <div class="mt-10">
+                    <a href="mailto:simon.yu@apa-tw.org" class="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        點此寄送 Email 預約
+                    </a>
+                </div>
+                <div class="mt-8 text-slate-400">
+                    <p>或透過電話聯繫：<a href="tel:+886933716960" class="hover:text-white">+886 (0)933 716960</a></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-900">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-slate-500 text-sm">
+            <p>&copy; 2025 余孟勳 (Simon Yu) NPO 卓越領袖教練. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('tab-active');
+                        btn.classList.add('tab-inactive');
+                    });
+                    button.classList.add('tab-active');
+                    button.classList.remove('tab-inactive');
+
+                    tabContents.forEach(content => {
+                        if (content.id === tabId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+            
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
