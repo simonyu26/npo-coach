@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Calm Neutral (Background: slate-50, Text: slate-800, Accent: blue-600) -->
-    <!-- Application Structure Plan: A personal homepage SPA structured as: Hero (Intro) -> About Me (Credentials) -> Services Overview (Two services with CTAs) -> NPO CEO Coaching Details (Expandable/Tabbed content for deep dive) -> Board/Supervisor Training (Placeholder) -> Contact. This structure provides a clear brand overview before allowing users to drill down into specific service offerings, improving user navigation and information hierarchy. -->
-    <!-- Visualization & Content Choices: Report Info: Overall Personal Branding/Services -> Goal: Inform/Present -> Viz: Thematic sections, responsive layout (HTML/CSS/JS). Report Info: NPO CEO Service Details -> Goal: Inform/Organize -> Viz: Tabbed interface within a collapsible section (HTML/CSS/JS) -> Justification: Keeps all content in one file while allowing users to explore on demand. No charts needed for this homepage overview. CONFIRMING NO SVG/Mermaid. -->
+    <!-- Application Structure Plan: A personal homepage SPA structured as: Hero (Intro) -> About Me (Credentials & CV Download) -> Services Overview (Two services with CTAs) -> NPO CEO Coaching Details (Expandable/Tabbed content for deep dive, with Why/Who sections) -> Board/Supervisor Training (Expandable/Placeholder, with Why/Who sections) -> My Perspectives (Blog-like list of key publications) -> Contact. This structure provides a clear brand overview, detailed service exploration, thought leadership, and direct contact, all within a single page for enhanced user experience. -->
+    <!-- Visualization & Content Choices: Report Info: Overall Personal Branding/Services -> Goal: Inform/Present -> Viz: Thematic sections, responsive layout (HTML/CSS/JS). Report Info: NPO CEO Service Details -> Goal: Inform/Organize -> Viz: Tabbed interface within a collapsible section (HTML/CSS/JS) -> Justification: Keeps all content in one file while allowing users to explore on demand. Report Info: Board Training Details -> Goal: Inform/Present -> Viz: Collapsible section (HTML/CSS/JS) -> Justification: Provides expandable content. Report Info: Publications/Articles -> Goal: Inform/Establish Authority -> Viz: Simple list with external links (HTML/CSS) -> Justification: Effective for a blog-like presentation without complex SPA routing for individual articles. CONFIRMING NO SVG/Mermaid. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
@@ -58,6 +58,13 @@
             box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
             border-color: #60a5fa;
         }
+        .publication-item {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .publication-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px -2px rgb(0 0 0 / 0.05);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-700">
@@ -72,6 +79,7 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#about" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">關於我</a>
                         <a href="#services-overview" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">服務項目</a>
+                        <a href="#perspectives" class="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">我的觀點</a>
                         <a href="#contact" class="bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-full text-sm font-bold">立即諮詢</a>
                     </div>
                 </div>
@@ -88,6 +96,7 @@
                 <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                     <a href="#about" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">關於我</a>
                     <a href="#services-overview" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">服務項目</a>
+                    <a href="#perspectives" class="text-slate-600 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium">我的觀點</a>
                     <a href="#contact" class="bg-blue-600 text-white block px-3 py-2 rounded-md text-base font-bold">立即諮詢</a>
                 </div>
             </div>
@@ -139,6 +148,12 @@
                         <p class="mt-2 text-sm text-slate-600">豐富的講師經驗，多項研究報告與專欄文章廣受引用，具備深刻洞察力。</p>
                     </div>
                 </div>
+                <div class="mt-16 text-center">
+                    <a href="重要工作經歷列表_輔大 (1).pdf" download class="bg-blue-600 text-white hover:bg-blue-700 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        下載完整履歷 (PDF)
+                    </a>
+                    <p class="mt-4 text-slate-600">更深入了解我的專業歷程與成就</p>
+                </div>
             </div>
         </section>
 
@@ -174,7 +189,23 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">NPO 卓越領袖教練：服務詳情</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">本服務旨在提供 CEO 一對一、客製化且高度機密的指導與策略諮詢，協助您在複雜的挑戰中找到清晰方向，提升個人領導力與組織營運效能。</p>
+                </div>
+
+                <div class="mt-12 p-8 bg-slate-100 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">為何需要 NPO 卓越領袖教練？</h3>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2">
+                        <li>**應對多樣化挑戰：** NPO CEO 需獨自面對快速變化的外部環境，從法規、募款到營運管理，挑戰層出不窮。</li>
+                        <li>**突破個人職涯瓶頸：** 缺乏系統性學習與外部視角，可能限制個人領導力與專業能力的提升。</li>
+                        <li>**解決決策孤獨感：** 高階決策往往缺乏可信賴的外部諮詢與支持，容易感到孤立無援。</li>
+                        <li>**優化組織永續發展：** 確保財務健全、治理透明、團隊高效，是組織長期穩健發展的關鍵。</li>
+                    </ul>
+                    <h3 class="text-2xl font-bold text-slate-800 mt-8 mb-4">誰適合這項服務？</h3>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2">
+                        <li>**新任 NPO 執行長：** 需要快速掌握全面營運與治理要點，建立領導信心。</li>
+                        <li>**資深 NPO 執行長：** 面臨組織轉型、擴張或重大挑戰，尋求外部策略夥伴。</li>
+                        <li>**希望提升個人領導力與專業技能的 NPO 高階主管。**</li>
+                        <li>**尋求高度機密與客製化指導的 NPO 領導者。**</li>
+                    </ul>
                 </div>
 
                 <div class="mt-12 max-w-4xl mx-auto">
@@ -238,7 +269,23 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
                     <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">董理監事會專業培訓：服務詳情</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">此培訓服務旨在提升董理監事會成員對其角色、職責與法律義務的理解，強化財務監督、策略引導與風險管理能力，促進董事會與管理團隊的有效協作，共同引導組織穩健前行，實現使命。</p>
+                </div>
+
+                <div class="mt-12 p-8 bg-slate-100 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-4">為何需要董理監事會專業培訓？</h3>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2">
+                        <li>**強化治理職能：** 確保董理監事會成員充分理解其法律義務、角色與責任，避免潛在風險。</li>
+                        <li>**提升策略引導能力：** 協助董理監事會有效參與組織策略制定，確保決策與使命一致。</li>
+                        <li>**優化財務監督：** 提升對財務報表的解讀能力，確保組織資源的透明與有效運用。</li>
+                        <li>**促進團隊協作：** 建立董理監事會與管理團隊間的有效溝通與合作機制。</li>
+                    </ul>
+                    <h3 class="text-2xl font-bold text-slate-800 mt-8 mb-4">誰適合這項服務？</h3>
+                    <ul class="list-disc list-inside text-slate-700 space-y-2">
+                        <li>**新任董理監事會成員：** 需快速熟悉非營利組織治理的基礎知識與實務。</li>
+                        <li>**現任董理監事會成員：** 希望深化專業知識，提升治理效能與策略參與度。</li>
+                        <li>**非營利組織的儲備董理監事。**</li>
+                        <li>**希望全面提升組織治理水準的 NPO。**</li>
+                    </ul>
                 </div>
 
                 <div class="mt-12 max-w-4xl mx-auto p-8 bg-slate-100 rounded-lg shadow-md">
@@ -259,6 +306,56 @@
                     <button class="close-board-details-btn mt-6 md:mt-0 md:ml-4 bg-slate-200 text-slate-700 hover:bg-slate-300 px-8 py-4 rounded-full text-lg font-bold shadow-lg transform hover:scale-105 transition-transform duration-300">
                         關閉詳情
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="perspectives" class="py-20 sm:py-24">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900">我的觀點與發表</h2>
+                    <p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">我透過研究、撰文與演講，持續分享對非營利領域的洞察與思考，期待能為公民社會的發展貢獻一份心力。</p>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2023</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">《公益觀察2023:交織的暗影》</h3>
+                        <p class="mt-2 text-slate-600">本報告以連續3年度民調資料，完整分析臺灣捐款行為及趨勢，為相關媒體報導、學術研究、NPO發展規劃之重要素材。</p>
+                        <a href="#" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀更多 &rarr;</a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2022</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">《公益觀察2022:韌性與復歸》</h3>
+                        <p class="mt-2 text-slate-600">除延續捐款人行為調查外，另調査企業捐助行為，試圖建構對臺灣捐款的全面性理解。</p>
+                        <a href="#" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀更多 &rarr;</a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2021</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">《公益觀察2021:風險社會裡的信任與連結》</h3>
+                        <p class="mt-2 text-slate-600">本報告為臺灣首度委託民調公司進行捐款人行為調查，並據以推估整體公益捐款規模。</p>
+                        <a href="#" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀更多 &rarr;</a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2019</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">《公益觀察2019:正在消失的善意》</h3>
+                        <p class="mt-2 text-slate-600">本報告以國稅局公開之捐贈扣除額資料，分析捐款變動趨勢。</p>
+                        <a href="#" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀更多 &rarr;</a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2015</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">從慈濟看台灣公益組織的財務透明</h3>
+                        <p class="mt-2 text-slate-600">慈濟透明度風波時，於社群及傳統媒體被大量引用或轉發。</p>
+                        <a href="https://npost.tw/archives/14298" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀全文 (NPOst) &rarr;</a>
+                    </div>
+                    <div class="publication-item bg-white p-6 rounded-lg shadow-sm border border-slate-200">
+                        <p class="text-sm text-slate-500">2014</p>
+                        <h3 class="mt-2 text-xl font-bold text-slate-800">批評紅十字會之前，你需要了解的幾件事</h3>
+                        <p class="mt-2 text-slate-600">紅十字會311捐款爭議時，於社群及傳統媒體被大量引用或轉發。</p>
+                        <a href="https://npost.tw/archives/7625" target="_blank" class="mt-4 inline-block text-blue-600 hover:text-blue-700 font-semibold text-sm">閱讀全文 (NPOst) &rarr;</a>
+                    </div>
+                </div>
+                <div class="mt-16 text-center">
+                    <p class="text-lg text-slate-600">更多發表與研究，請參考我的<a href="重要工作經歷列表_輔大 (1).pdf" download class="text-blue-600 hover:text-blue-700 font-bold underline">完整履歷</a>。</p>
                 </div>
             </div>
         </section>
@@ -289,8 +386,32 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const tabButtons = document.querySelectorAll('#ceo-service-details .tab-btn');
-            const tabContents = document.querySelectorAll('#ceo-service-details .tab-content');
+            // Tab functionality for CEO service details
+            const ceoTabButtons = document.querySelectorAll('#ceo-service-details .tab-btn');
+            const ceoTabContents = document.querySelectorAll('#ceo-service-details .tab-content');
+
+            function showCeoTab(tabId) {
+                ceoTabContents.forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(tabId).classList.remove('hidden');
+
+                ceoTabButtons.forEach(btn => {
+                    btn.classList.remove('tab-active');
+                    btn.classList.add('tab-inactive');
+                });
+                document.querySelector(`#ceo-service-details button[data-tab="${tabId}"]`).classList.add('tab-active');
+                document.querySelector(`#ceo-service-details button[data-tab="${tabId}"]`).classList.remove('tab-inactive');
+            }
+
+            ceoTabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.dataset.tab;
+                    showCeoTab(tabId);
+                });
+            });
+
+            // Service Details Section Toggles
             const openCeoDetailsBtn = document.querySelector('.open-ceo-details-btn');
             const closeCeoDetailsBtn = document.querySelector('.close-ceo-details-btn');
             const ceoServiceDetailsSection = document.getElementById('ceo-service-details');
@@ -299,32 +420,10 @@
             const closeBoardDetailsBtn = document.querySelector('.close-board-details-btn');
             const boardTrainingDetailsSection = document.getElementById('board-training-details');
 
-            function showTab(tabId) {
-                tabContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-                document.getElementById(tabId).classList.remove('hidden');
-
-                tabButtons.forEach(btn => {
-                    btn.classList.remove('tab-active');
-                    btn.classList.add('tab-inactive');
-                });
-                document.querySelector(`button[data-tab="${tabId}"]`).classList.add('tab-active');
-                document.querySelector(`button[data-tab="${tabId}"]`).classList.remove('tab-inactive');
-            }
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.dataset.tab;
-                    showTab(tabId);
-                });
-            });
-
-            // CEO Service Details Toggle
             openCeoDetailsBtn.addEventListener('click', () => {
                 ceoServiceDetailsSection.classList.remove('hidden');
                 boardTrainingDetailsSection.classList.add('hidden'); // Ensure other section is hidden
-                showTab('strategy'); // Default to first tab
+                showCeoTab('strategy'); // Default to first tab for CEO section
                 ceoServiceDetailsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
 
@@ -332,7 +431,6 @@
                 ceoServiceDetailsSection.classList.add('hidden');
             });
 
-            // Board Training Details Toggle
             openBoardDetailsBtn.addEventListener('click', () => {
                 boardTrainingDetailsSection.classList.remove('hidden');
                 ceoServiceDetailsSection.classList.add('hidden'); // Ensure other section is hidden
